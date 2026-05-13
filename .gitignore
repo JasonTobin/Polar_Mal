@@ -1,0 +1,24 @@
+# Virtual environment
+.venv/
+
+# Raw dataset files
+data/*.csv
+data/*.npz
+data/images/
+data/images_no_blur/
+
+# Large checkpoint files (>100MB — GitHub hard limit)
+data/models/**/last_checkpoint*.pth
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

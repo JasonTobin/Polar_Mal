@@ -1,0 +1,90 @@
+Training on: cuda  (NVIDIA RTX 4000 SFF Ada Generation)
+Workers for data loading: 8 (RAM-cache + fork)
+
+Loading datasets into RAM (one-time cost):
+  Caching 94104 images into RAM ...
+  Cached 94104 images.
+
+  Caching 20165 images into RAM ...
+  Cached 20165 images.
+
+  Caching 20166 images into RAM ...
+  Cached 20166 images.
+
+Classes (12): ['backdoor', 'benign', 'cryptominer', 'downloader', 'dropper', 'informationstealer', 'other', 'pua', 'ransomware', 'trojan', 'virus', 'worm']
+Samples  — train: 94104  val: 20165  test: 20166
+
+No checkpoint found — starting from scratch.
+
+Early stopping patience: 10 epochs
+
+Epoch  Train Loss  Train Acc  Val Loss  Val Acc          LR    Time
+------------------------------------------------------------------------
+    1      2.4318    55.36%    1.3941   60.16%    1.00e-03     47s
+         -> New best saved (val_acc=60.16%)
+    2      1.3841    63.36%    1.3767   63.51%    9.94e-04     32s
+         -> New best saved (val_acc=63.51%)
+    3      1.2152    70.04%    1.7302   46.52%    9.76e-04     32s
+         -> No improvement (1/10)
+    4      1.0938    76.22%    0.9173   83.31%    9.46e-04     32s
+         -> New best saved (val_acc=83.31%)
+    5      1.0159    80.52%    0.9024   85.68%    9.05e-04     33s
+         -> New best saved (val_acc=85.68%)
+    6      0.9670    83.36%    0.8970   85.77%    8.54e-04     32s
+         -> New best saved (val_acc=85.77%)
+    7      0.9299    85.36%    0.8856   86.31%    7.94e-04     33s
+         -> New best saved (val_acc=86.31%)
+    8      0.9044    86.78%    0.8018   91.10%    7.27e-04     32s
+         -> New best saved (val_acc=91.10%)
+    9      0.8794    88.03%    0.9003   86.77%    6.55e-04     33s
+         -> No improvement (1/10)
+   10      0.8673    88.43%    1.1727   75.81%    5.79e-04     33s
+         -> No improvement (2/10)
+   11      0.8450    89.42%    1.0412   76.42%    5.01e-04     33s
+         -> No improvement (3/10)
+   12      0.8348    89.91%    0.9302   84.83%    4.22e-04     33s
+         -> No improvement (4/10)
+   13      0.8190    90.51%    0.7478   92.35%    3.46e-04     33s
+         -> New best saved (val_acc=92.35%)
+   14      0.8100    90.73%    0.7339   92.32%    2.74e-04     33s
+         -> No improvement (1/10)
+   15      0.8018    91.03%    0.7178   92.92%    2.07e-04     33s
+         -> New best saved (val_acc=92.92%)
+   16      0.7927    91.44%    0.8064   89.85%    1.47e-04     33s
+         -> No improvement (1/10)
+   17      0.7863    91.78%    0.7043   93.42%    9.64e-05     33s
+         -> New best saved (val_acc=93.42%)
+   18      0.7802    91.92%    0.7027   93.34%    5.54e-05     33s
+         -> No improvement (1/10)
+   19      0.7767    92.11%    0.7013   93.55%    2.54e-05     33s
+         -> New best saved (val_acc=93.55%)
+   20      0.7742    92.19%    0.6999   93.59%    7.15e-06     32s
+         -> New best saved (val_acc=93.59%)
+   21      1.0204    81.67%    0.8449   89.17%    1.00e-03     32s
+         -> No improvement (1/10)
+   22      0.9161    86.83%    0.9753   82.77%    9.98e-04     33s
+         -> No improvement (2/10)
+   23      0.8869    88.13%    1.0980   74.83%    9.94e-04     32s
+         -> No improvement (3/10)
+   24      0.8686    88.80%    3.2947   27.94%    9.86e-04     32s
+         -> No improvement (4/10)
+   25      0.8515    89.45%    0.9606   81.31%    9.76e-04     32s
+         -> No improvement (5/10)
+   26      0.8415    89.84%    0.8316   89.22%    9.62e-04     32s
+         -> No improvement (6/10)
+   27      0.8304    90.25%    0.8449   85.77%    9.46e-04     32s
+         -> No improvement (7/10)
+   28      0.8265    90.22%    0.8279   89.42%    9.26e-04     32s
+         -> No improvement (8/10)
+   29      0.8178    90.51%    0.8309   89.18%    9.05e-04     32s
+         -> No improvement (9/10)
+   30      0.8136    90.78%    0.7748   90.26%    8.80e-04     32s
+         -> No improvement (10/10)
+
+Early stopping triggered at epoch 30.
+
+Training history saved to /home/tobin/Desktop/Polar/Polar_Mal/data/models/greyscale/v2/training_history.csv
+
+Loading best model from /home/tobin/Desktop/Polar/Polar_Mal/data/models/greyscale/v2/best_model.pth
+Test loss: 0.6988  Test accuracy: 93.69%
+Best val accuracy at epoch 20: 93.59%

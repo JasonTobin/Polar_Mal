@@ -24,9 +24,9 @@ from tqdm import tqdm
 # ---------------------------------------------------------------------------
 ROOT        = Path(__file__).resolve().parents[2]
 DATA_DIR    = ROOT / "data"
-NPZ_PATH    = DATA_DIR / "bodmas.npz"
-CAT_PATH    = DATA_DIR / "bodmas_malware_category.csv"
-META_PATH   = DATA_DIR / "bodmas_metadata.csv"
+NPZ_PATH    = DATA_DIR / "models" / "bodmas.npz"
+CAT_PATH    = DATA_DIR / "models" / "bodmas_malware_category.csv"
+META_PATH   = DATA_DIR / "models" / "bodmas_metadata.csv"
 BOUNDS_PATH = DATA_DIR / "spiral_bounds.npz"
 OUT_DIR     = DATA_DIR / "images"
 

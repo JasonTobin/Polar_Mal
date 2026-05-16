@@ -20,6 +20,7 @@ Saves to data/models/v4/
 
 import csv
 import io
+import os
 import time
 from pathlib import Path
 
@@ -46,7 +47,8 @@ SWA_PATH     = MODEL_DIR / "swa_model.pth"
 # ---------------------------------------------------------------------------
 # Hyperparameters
 # ---------------------------------------------------------------------------
-BATCH_SIZE          = 256
+BATCH_SIZE          = 512
+NUM_WORKERS         = min(8, (os.cpu_count() or 4))
 NUM_EPOCHS          = 150
 LEARNING_RATE       = 1e-3
 EARLY_STOP_PATIENCE = 15   # phase-1 only; SWA phase always runs to completion
@@ -203,7 +205,7 @@ def main():
         print(f"Training on: cuda  ({torch.cuda.get_device_name(0)})")
     else:
         print("Training on: cpu")
-    print("Workers for data loading: 0 (RAM-cache mode)\n")
+    print(f"Workers for data loading: {NUM_WORKERS} (RAM-cache + fork)\n")
 
     print("Loading datasets into RAM (one-time cost):")
     train_ds = CachedImageFolder(DATA_DIR / "train", transform=train_transform)
@@ -216,11 +218,14 @@ def main():
 
     pin = device.type == "cuda"
     train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,
-                              num_workers=0, pin_memory=pin)
+                              num_workers=NUM_WORKERS, pin_memory=pin,
+                              persistent_workers=True, prefetch_factor=4)
     val_loader   = DataLoader(val_ds,   batch_size=BATCH_SIZE, shuffle=False,
-                              num_workers=0, pin_memory=pin)
+                              num_workers=NUM_WORKERS // 2, pin_memory=pin,
+                              persistent_workers=True, prefetch_factor=2)
     test_loader  = DataLoader(test_ds,  batch_size=BATCH_SIZE, shuffle=False,
-                              num_workers=0, pin_memory=pin)
+                              num_workers=NUM_WORKERS // 2, pin_memory=pin,
+                              persistent_workers=True, prefetch_factor=2)
 
     model     = MalwareCNNv4(num_classes=num_classes).to(device)
     swa_model = AveragedModel(model)

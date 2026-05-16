@@ -22,3 +22,9 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+#Omit dataset images
+data/images/
+data/images_greyscale/
+# Keep model checkpoints, etc...
+EFO
+data/models/bodmas.npz
